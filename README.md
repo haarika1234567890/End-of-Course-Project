@@ -2,8 +2,7 @@
 
 1. DonateMart is the name of the application
 2. Haarika Sadineni, Daniela Tiritilli
-3. 
-Introducing DonateMart, your one-stop destination for charitable giving and affordable shopping! At DonateMart, we've reimagined the way you can make a positive impact on your community while also meeting your own needs.
+3. Introducing DonateMart, your one-stop destination for charitable giving and affordable shopping! At DonateMart, we've reimagined the way you can make a positive impact on your community while also meeting your own needs.
 
 Are you looking to declutter your closet or upgrade your home appliances? DonateMart provides a seamless platform for you to donate gently used clothes, household items, and utilities. Whether it's that dress you've only worn once or the blender gathering dust in your kitchen, your donations find new homes and bring joy to others.
 
