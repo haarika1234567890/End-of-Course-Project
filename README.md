@@ -12,6 +12,7 @@ But that's not all. At DonateMart, we believe in the power of giving back. That'
 With an easy-to-use interface and a wide selection of items, DonateMart makes it convenient for you to shop with purpose. Browse through our curated collection of clothing, accessories, home goods, and more, all at reasonable prices that won't break the bank.
 
 Join the DonateMart community today and experience the joy of giving and shopping with a purpose. Together, we can make a difference, one donation and purchase at a time.
+
 4. Frontend Interface: This is the user-facing part of the app, accessible via mobile devices. It provides an intuitive interface for users to interact with the app's features such as buying used to barely used items for reasonable prices like clothing and household utilities and donating used or brand-new items with free shipping.
 
 
