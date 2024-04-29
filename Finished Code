@@ -1,0 +1,792 @@
+FINAL CODE
+
+import React, { Component } from 'react';
+import { AppRegistry, Text, View, StyleSheet, Image, TextInput, ImageBackground, TouchableHighlight, Alert, Dimensions, ScrollView } from 'react-native';
+import Constants from 'expo-constants';
+
+let deviceHeight = Dimensions.get('window').height;
+let deviceWidth = Dimensions.get('window').width;
+
+export default class App extends Component {
+     state = {
+        clothesfeedPageDisplay: 'block',
+        utilitiesfeedPageDisplay: 'none',
+        cartPageDisplay: 'none',
+        donatePageDisplay: 'none',
+        infoPageDisplay: 'none',
+       
+        profileURL: '',
+        profileName: '',
+        postURL: '',
+        selectedAccountIndex: 0,
+       
+        donateAmount: '',
+        total: 0,
+        clothesbuy: 0,
+        shipping: ' ',
+        imageFeed: [],
+        cartlist:[],
+       
+        accounts: [
+            {
+            name: 'mike4498',
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY5BAobCtolEBBBrbmhxTVVYNky6tATNow7Q&usqp=CAU',
+            },
+           
+        ],
+        clothesfeed: [
+            {
+            name: 'awesomecool_daniela',
+            image: 'https://codehs.com/uploads/966d4f903823c2b8cb86379c96b9dde1',
+            scale: 4,
+            },
+            {
+            name: 'sarah34_catlover',
+            image: 'https://codehs.com/uploads/f51b830ea6804a8e2ae6dea90017f813',
+            scale: 3,
+            },
+             {
+            name: 'dustin12',
+            image: 'https://codehs.com/uploads/c91ebe141d34d9a416fe916ecd443afd',
+            scale: 3,
+            },
+            {
+            name: 'awesomemike1006',
+            image: 'https://codehs.com/uploads/425dcb2795228fbe6f056ba4994b4d92',
+             scale: 2,
+            },
+     
+            {
+            name: 'dog101tricks',
+            image: 'https://codehs.com/uploads/2169b26ea84947f2872b5465df14d9ca',
+             scale: 5,
+            },
+            {
+           name: 'diva818',
+            image: 'https://codehs.com/uploads/47b3dc8534313b00374e14bea9133f72',
+             scale: 5,
+            },
+            {
+            name: 'haarika#1234',
+            image: 'https://codehs.com/uploads/b6b5ae937551acc965cc48c471da957f',
+             scale: 2,
+            },
+            
+            {
+            name: 'yahoo#474',
+            image: 'https://codehs.com/uploads/894ba63503bde1747219f18a99956e92',
+             scale: 5,
+            },
+            
+            {
+            name: 'hehehehe(0)',
+            image: 'https://codehs.com/uploads/94790e1a65635d5a3993c2125aa04d1f',
+             scale: 4,
+            },
+            {
+            name: 'lol@life',
+            image: 'https://codehs.com/uploads/51660243a7ecbe1c31c5fa727e7c243d',
+             scale: 5,
+            },
+            
+           
+        ],
+         utilitiesfeed: [
+            {
+            name: 'dog4life',
+            image: 'https://codehs.com/uploads/9d9406bb8c62aef8a383baee2974f223',
+            scale: 5,
+            },
+             {
+            name: 'tomRiddle_watchout',
+           scale: 3,
+            image: 'https://codehs.com/uploads/eba17681a5fd154e44c894519559c367',
+            },
+            {
+            name: 'Lesly_nope21',
+           scale: 5,
+            image: 'https://codehs.com/uploads/1f50c15bd3c1a61bcd7e665d90f02ebd',
+            },
+            {
+            name: 'mcds_icecream',
+            image: 'https://codehs.com/uploads/2111eaf1f7c5a1b3ecebc279c027d8c4',
+            scale: 4,
+            },
+            {
+            name: 'tricky5677',
+            image: 'https://codehs.com/uploads/2b411a85d404df1dd8bc952840c41c85',
+            scale:2,
+            },
+            
+            
+            {
+            name: 'awesomecool_daniela',
+            image: 'https://codehs.com/uploads/c69f42d35992c84d1e578e22536719aa',
+            scale:5,
+            },
+            
+             {
+            name: 'ayoBuddy#654',
+            image: 'https://codehs.com/uploads/a6b0e389d8bc291c9f8c971c86f6a84f',
+            scale:1,
+            },
+            
+            {
+            name: 'hi@byeWWW',
+            image: 'https://codehs.com/uploads/fbbd20ecec193836f09b601e858d32d2',
+            scale:4,
+            },
+            
+            {
+            name: 'iamsocoollol#hehe',
+            image: 'https://codehs.com/uploads/7ca67b36320f31bd15707f2b115db3c1',
+            scale:2,
+            },
+            
+            {
+            name: 'dustin12',
+            image: 'https://codehs.com/uploads/c950290583e1508ba8ad15f1549564f9',
+            scale:3,
+            },
+            
+           
+        ],
+       
+       
+
+    };
+
+   
+    // different screens
+     handleClothesFeedPagePress  = () => this.setState(state => ({
+        clothesfeedPageDisplay: 'block',
+        utilitiesfeedPageDisplay: 'none',
+        cartPageDisplay: 'none',
+        donatePageDisplay: 'none',
+    }));
+
+    handleUtilitiesFeedPagePress  = () => this.setState(state => ({
+        clothesfeedPageDisplay: 'none',
+        utilitiesfeedPageDisplay: 'block',
+        cartPageDisplay: 'none',
+        donatePageDisplay: 'none',
+        infoPageDisplay: 'none',
+    }));
+
+    handleCartPagePress  = () => this.setState(state => ({
+       clothesfeedPageDisplay: 'none',
+        utilitiesfeedPageDisplay: 'none',
+        cartPageDisplay: 'block',
+        donatePageDisplay: 'none',
+        infoPageDisplay: 'none',
+    }));
+     handleDonatePagePress  = () => this.setState(state => ({
+        clothesfeedPageDisplay: 'none',
+        utilitiesfeedPageDisplay: 'none',
+        cartPageDisplay: 'none',
+        donatePageDisplay: 'block',
+        infoPageDisplay: 'none',
+    }));
+   
+      handleinfoPagePress  = () => this.setState(state => ({
+        clothesfeedPageDisplay: 'none',
+        utilitiesfeedPageDisplay: 'none',
+        cartPageDisplay: 'none',
+        donatePageDisplay: 'none',
+        infoPageDisplay: 'block',
+    }));
+ 
+ 
+       donate = () => {
+        this.setState({
+           total: (this.state.donateAmount + this.state.total),
+        })
+    };
+   
+ 
+    donateAmount = donateAmount => {
+        this.setState({ donateAmount: Number(donateAmount) });
+    };
+   
+   
+     amount = amount => {
+        this.setState({ amount });
+    };
+    total = total => {
+        this.setState(total);
+    };
+
+    clothesbuy = clothesbuy => {
+        this.setState(clothesbuy);
+    };      
+    postImage = () => {
+        const newPost = {
+            imageURL: this.state.postURL,
+            accountIndex: this.state.selectedAccountIndex, //
+            likes: 0, // Start at 0 likes.
+        };
+       
+        this.setState(prevState => ({
+            imageFeed: [...prevState.imageFeed, newPost],
+            postURL: '',
+        }));
+       
+    };
+      checkout = () => {
+        this.setState(prevState => ({
+           clothesbuy: 0,
+            shipping: '',
+            cartlist: [],
+           
+        }));
+    };
+   
+    handleClothesbuy = (image) => {
+        //find the class in classlist by title
+        const selectedItem = this.state.clothesfeed.find((item) => item.image == image);
+       
+        if(selectedItem){
+            this.state.clothesbuy = this.state.clothesbuy + 6;
+            //add selected class to upcoming classes list
+            //prevState gets the info
+            this.setState((prevState) => ({
+                cartlist: [...prevState.cartlist, selectedItem],
+            }));
+        }
+     }
+        handleUtilitiesbuy = (image) => {
+        //find the class in classlist by title
+        const selectedItem = this.state.utilitiesfeed.find((item) => item.image == image);
+       
+        if(selectedItem){
+            this.state.clothesbuy = this.state.clothesbuy + 3;
+            //add selected class to upcoming classes list
+            //prevState gets the info
+            this.setState((prevState) => ({
+                cartlist: [...prevState.cartlist, selectedItem],
+            }));
+        }
+     }
+   
+    handleLike = (postId) => {
+    this.setState((prevState) => {
+        const updatedFeed = prevState.imageFeed.map(post => {
+            if (post.id === postId) {
+                return { ...post, likes: post.likes + 1 };
+            }
+            return post;
+        });
+        return { imageFeed: updatedFeed };
+    });
+    };
+    render() {
+        return (
+            <View style={styles.container}>
+
+                <View style={styles.headerBar}>
+                    <Text style={styles.headerText}>
+                    DonateMart
+                    </Text>
+                   
+                   
+                </View>
+               
+               
+                <View style={styles.navBarContainer}>
+               
+                <TouchableHighlight style={styles.navBarButton}
+                            onPress={this.handleClothesFeedPagePress}
+                            >
+                                <Text style={styles.navBarButtonText}>
+                                    Clothes
+                                </Text>
+                    </TouchableHighlight>
+                   
+                    <TouchableHighlight style={styles.navBarButton}
+                            onPress={this.handleUtilitiesFeedPagePress}
+                            >
+                                <Text style={styles.navBarButtonText}>
+                                   Utilities
+                                </Text>
+                    </TouchableHighlight>
+                   
+                    <TouchableHighlight style={styles.navBarButton}
+                            onPress={this.handleCartPagePress}
+                            >
+                                <Text style={styles.navBarButtonText}>
+                                    Cart
+                                </Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight style={styles.navBarButton}
+                            onPress={this.handleDonatePagePress}
+                            >
+                                <Text style={styles.navBarButtonText}>
+                                    Donate
+                                </Text>
+                    </TouchableHighlight>
+                     <TouchableHighlight style={styles.navBarButton}
+                            onPress={this.handleinfoPagePress}
+                            >
+                                <Text style={styles.navBarButtonText}>
+                                    Info
+                                </Text>
+                    </TouchableHighlight>
+                </View>
+               
+                <ScrollView style={{ display: this.state.clothesfeedPageDisplay }}>
+                    <View style={styles.mainContainer}>
+                     {this.state.clothesfeed.map((post) => (
+                        <View style={styles.feedContainer}>
+                           <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold',}}>
+                               {post.name}
+                          </Text>
+                         
+                          <Image
+                              source={{uri : post.image}}
+                              style={{height: deviceWidth, width: deviceWidth}}
+                          />
+                          <Text style={{ color: 'black', fontSize: 16, fontWeight: 'bold',}}>
+                          Rating:{post.scale}
+                          </Text>
+                           <TouchableHighlight style={styles.button}
+                            onPress={() => {this.handleClothesbuy(post.image)}}>
+                           
+                            <Text style={styles.text}>
+                            Buy!
+                            </Text>
+                        </TouchableHighlight>
+                        </View>
+                         ))}
+                         
+                        {this.state.imageFeed.map((post) => (
+                            <View key = {post.id} style={styles.feedContainer}>
+                                <View style={styles.miniHeaderBar}>
+                                    <Image
+                                        source={{ uri: this.state.accounts[post.accountIndex].image }}
+                                        style={{ height: deviceHeight / 16, width: deviceHeight / 16, borderRadius: 15, marginRight: 10, marginLeft: 15, }}
+                                    />
+                                    <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold',}}>
+                                        {this.state.accounts[post.accountIndex].name}
+                                    </Text>
+                                </View>
+                           
+                           
+                               <Image
+                                 source={{ uri: post.imageURL }}
+                                 style={{ height: deviceWidth, width: deviceWidth}}
+                                />
+                                <View style={{ flexDirection: 'row', alignItems: 'center',  margin: 10 }}>
+                                   
+                                    <TouchableHighlight onPress={() => this.handleLike(post.id)}>
+                                       
+                                        <Image
+                                        source = {{uri :'data:image/jpeg;base64,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' }}
+                                            style={{ height: 24, width: 24, marginRight: 10, }}
+                                        />
+                                    </TouchableHighlight>
+                                    <Text style={{ fontSize: 18, marginRight: 5 }}>{post.likes} likes</Text>
+                                </View>
+                           
+                           
+                            </View>
+                           
+                            ))}
+                       
+                    </View>
+                </ScrollView>
+               
+                 <ScrollView style={{ display: this.state.utilitiesfeedPageDisplay }}>
+                    <View style={styles.mainContainer}>
+                     {this.state.utilitiesfeed.map((p) => (
+                        <View style={styles.feedContainer}>
+                           <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold',}}>
+                               {p.name}
+                          </Text>
+                         
+                          <Image
+                              source={{uri : p.image}}
+                              style={{height: deviceWidth, width: deviceWidth}}
+                          />
+                         
+                          <Text style={{ color: 'black', fontSize: 16, fontWeight: 'bold',}}>
+                          Rating:{p.scale}
+                          </Text>
+                         
+                           <TouchableHighlight style={styles.button}
+                            onPress={() => {this.handleUtilitiesbuy(p.image)}}>
+                           
+                            <Text style={styles.text}>
+                            Buy!
+                            </Text>
+                            </TouchableHighlight>
+                        </View>
+                         ))}
+                         
+                        {this.state.imageFeed.map((post) => (
+                            <View key = {post.id} style={styles.feedContainer}>
+                                <View style={styles.miniHeaderBar}>
+                                    <Image
+                                        source={{ uri: this.state.accounts[post.accountIndex].image }}
+                                        style={{ height: deviceHeight / 16, width: deviceHeight / 16, borderRadius: 15, marginRight: 10, marginLeft: 15, }}
+                                    />
+                                    <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold',}}>
+                                        {this.state.accounts[post.accountIndex].name}
+                                    </Text>
+                                </View>
+                           
+                           
+                               <Image
+                                 source={{ uri: post.imageURL }}
+                                 style={{ height: deviceWidth, width: deviceWidth}}
+                                />
+                                <View style={{ flexDirection: 'row', alignItems: 'center',  margin: 10 }}>
+                                   
+                                    <TouchableHighlight onPress={() => this.handleLike(post.id)}>
+                                       
+                                        <Image
+                                        source = {{uri :'data:image/jpeg;base64,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' }}
+                                            style={{ height: 24, width: 24, marginRight: 10, }}
+                                        />
+                                    </TouchableHighlight>
+                                    <Text style={{ fontSize: 18, marginRight: 5 }}>{post.likes} likes</Text>
+                                </View>
+                           
+
+                            </View>
+                           
+                            ))}
+                           
+                             {this.state.imageFeed.map((post) => (
+                            <View key = {post.id} style={styles.feedContainer}>
+                                <View style={styles.miniHeaderBar}>
+                                    <Image
+                                        source={{ uri: this.state.accounts[post.accountIndex].image }}
+                                        style={{ height: deviceHeight / 16, width: deviceHeight / 16, borderRadius: 15, marginRight: 10, marginLeft: 15, }}
+                                    />
+                                    <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold',}}>
+                                        {this.state.accounts[post.accountIndex].name}
+                                    </Text>
+                                </View>
+                           
+                           
+                               <Image
+                                 source={{ uri: post.imageURL }}
+                                 style={{ height: deviceWidth, width: deviceWidth}}
+                                />
+                                <View style={{ flexDirection: 'row', alignItems: 'center',  margin: 10 }}>
+                                   
+                                    <TouchableHighlight onPress={() => this.handleLike(post.id)}>
+                                       
+                                        <Image
+                                        source = {{uri :'data:image/jpeg;base64,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' }}
+                                            style={{ height: 24, width: 24, marginRight: 10, }}
+                                        />
+                                    </TouchableHighlight>
+                                    <Text style={{ fontSize: 18, marginRight: 5 }}>{post.likes} likes</Text>
+                                </View>
+                           
+                           
+                            </View>
+                           
+                            ))}
+                       
+                    </View>
+                </ScrollView>
+               
+                <ScrollView style={{ display: this.state.cartPageDisplay }}>
+               
+                    <View style={styles.cartText}>
+                    Cart Items:
+                    </View>
+                    <View style={styles.infoText}>
+                    **Items from Clothing Feed are $4 plus a $2 shipping fee
+                   
+                    </View>
+                    <View style={styles.infoText}>
+                    **Items from Utilities Feed are $3 with no shipping fee!
+                    </View>
+                {this.state.cartlist.map((item) => (
+                    <View style={styles.mainContainer}>
+                        <Image
+                            source={{ uri: item.image}}
+                           style= {{height: deviceWidth, width: deviceWidth}}
+                        />
+                       
+                    </View>
+                ))}
+               
+                    <View style={styles.cartText}>
+                    Total: ${this.state.clothesbuy}
+                    </View>
+                   
+                    <TouchableHighlight style={styles.checkoutInput}
+                                    onPress={() => this.checkout()}
+                                   
+                                >
+                                <Text style={styles.navBarButtonText}>
+                                    Checkout!
+                                </Text>
+                             </TouchableHighlight>
+               
+                 </ScrollView>
+                 
+                <ScrollView style={{ display: this.state.donatePageDisplay }}>
+                    <View style={styles.mainContainer}>
+                   
+                       
+                        <View style={styles.accountSelectContainer}>
+                           
+                            <ScrollView>
+                                {this.state.accounts.map((person, index) => (
+                                    <TouchableHighlight
+                                        key={index}
+                                        style={[
+                                            styles.miniHeaderBar,
+                                            index === this.state.selectedAccountIndex ? { backgroundColor: 'lightgray' } : null,
+                                        ]}
+                                        onPress={() => this.setState({ selectedAccountIndex: index })}
+                                    >
+                                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                            <Image
+                                                source={{ uri: person.image }}
+                                                style={{ height: deviceHeight / 16, width: deviceHeight / 16, borderRadius: 16, }}
+                                            />
+                                            <Text style={styles.changeAccount}>{person.name}</Text>
+                                        </View>
+                                    </TouchableHighlight>
+                                ))}
+                            </ScrollView>
+                           
+                        </View>
+                       
+
+                         <View style={styles.postPageContainer}>
+                                   
+                                <Image
+                                    source={ this.state.accounts[this.state.selectedAccountIndex].image}
+                                    style={{ height: 100, width: 100, borderRadius: 25, }}
+                                />
+                                    <Text style = {styles.navBarButtonText}>
+                                       {this.state.accounts[this.state.selectedAccountIndex].name}
+                                    </Text>
+                                   
+                                     <TextInput
+                                value={this.state.postURL}
+                                onChangeText={(postURL) => this.setState({postURL})}
+                                placeholder= "Image URL"
+                                style={styles.profileInput}
+                            />
+                           
+                           
+                           
+                            <TouchableHighlight style={styles.profileInput}
+                                    onPress={() => this.postImage()}
+                                >
+                                <Text style={styles.navBarButtonText}>
+                                    Post
+                                </Text>
+                             </TouchableHighlight>
+                             
+                              <TextInput
+                                value={this.state.donateAmount}
+                                onChangeText={(donateAmount) => this.setState({donateAmount: Number(donateAmount)})}
+                                placeholder= "Type Amount"
+                                style={styles.profileInput}
+                            />
+                           
+                            <TouchableHighlight style={styles.profileInput}
+                                onPress={() => this.donate()}
+                            >
+                           
+                                <Text style={styles.navBarButtonText}>
+                                    Donate
+                                </Text>
+                               
+                                </TouchableHighlight>
+                             
+                                 <View style={styles.profileInput}>
+                             
+                                 <Text style={styles.moneyText}>
+                                 ${this.state.total}
+                                 </Text>
+                                 </View>
+                           
+
+                        </View>
+                                             
+                           
+                       
+                    </View>
+                </ScrollView>
+                <ScrollView style={{ display: this.state.infoPageDisplay }}>
+               
+               
+                    <View style={styles.cartText}>
+                    About Us!
+                    </View>
+           
+                    <View style={styles.texts}>
+                    Our app is designed to help people from all cultures access clothings and household utilities through the community, especially for those may not be able to afford a lot. By connecting individuals in need with generous donors, we aim to promote inclusivity and diversity in all communities. Joins us in creating a more accessible way to access cultures and clothes/utilities at a lower cost.
+                    </View>
+                   
+                    <View style={styles.cartText}>
+                    Want to Help out?  
+                    </View>
+                    <View style={styles.texts}>
+                    Through are Donate page you can donate to help support cost of shipping or send out your own clothes/utilities to your local community!
+                    </View>
+                    <View style={styles.cartText}>
+                    Quality  in your Clothes!
+                    </View>
+                     <View style={styles.texts}>
+                     
+                     Through are Clothing and Utilities feeds there is a 1-5 scale, 5 being the best, 1 being heavily worn.
+                   </View>
+                   <View style={styles.cartText}>
+                    What about shipping?
+                    </View>
+                    <View style={styles.texts}>
+                     Shipping is free for any utility buy but there is a $2 fee for clothes to support shipping costs!
+                    </View>
+                 </ScrollView>
+            </View>
+        );
+    }
+}
+
+const styles = StyleSheet.create({
+    container: {
+        height: deviceHeight,
+        width: deviceWidth,
+       
+    },
+   
+    cartText: {
+        fontSize: 25,
+        fontWeight: 'bold',
+       color: '#a22448',
+      
+    },
+   
+    texts:{
+        fontSize: 15,
+        margin: 3,
+        fontFamily: 'Futura',
+    },
+   
+    infoText:{
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: 'red',
+        justifyContent: 'space-evenly',
+ fontFamily: 'Futura',
+    },
+     headerBar: {
+        backgroundColor: '#f29aa1',
+        height: deviceHeight/10,
+        width: deviceWidth,
+        borderBottomColor: 'pink',
+        borderBottomWidth: 2,
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    headerText: {
+        fontSize: 36,
+        fontWeight: 'bold',
+        fontFamily: 'Georgia',
+    },
+    mainContainer: {
+        height: 8*(deviceHeight/10),
+        width: deviceWidth,
+    },
+   
+    navBarContainer: {
+        height: deviceHeight/10,
+        width: deviceWidth,
+        backgroundColor: '#f29aa1',
+        borderTopColor: ' #081245',
+        borderTopWidth: 2,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+    },
+    navBarButton: {
+        height: deviceHeight/16,
+        width: deviceWidth/5,
+        borderWidth: 2,
+        borderColor: '#243e7d',
+        backgroundColor: '#23999e',
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        color: 'white',
+    },
+    navBarButtonText: {
+        fontSize: 15,
+        fontWeight: 'bold',
+       
+    },
+     miniHeaderBar: {
+        backgroundColor: 'white',
+        height: deviceHeight/13,
+        width: deviceWidth,
+        borderBottomColor: 'black',
+        borderBottomWidth: 2,
+        textAlign: 'left',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        flexDirection: 'row',
+    },
+    changeAccount: {
+        fontSize: 16,
+        fontWeight: 'bold',
+       
+        marginLeft: 10,
+    },
+    accountSelecter: {
+        height: (deviceHeight/5),
+        width: deviceWidth,
+    },
+    profileInput: {
+        height: deviceHeight/14,
+        width: deviceWidth/2,
+        borderWidth: 2,
+        borderColor: 'pink',
+        backgroundColor: 'white',
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 12,
+    },
+   
+      checkoutInput: {
+        height: deviceHeight/14,
+        width: deviceWidth/2,
+        borderWidth: 2,
+        borderColor: '#a22448',
+        backgroundColor: 'white',
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 6,
+    },
+    accountSelectContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    postPageContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 8*(deviceHeight/10),
+        backgroundColor: '#dcf0ea',
+    },
+   
+    feedContainer: {
+        height: 2* (deviceHeight/13) + deviceWidth,
+        borderBottomWidth: 2,
+        borderBottomColor: 'black',
+         
+    },
+});
