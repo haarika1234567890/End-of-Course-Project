@@ -1,7 +1,5 @@
-FINAL CODE FOR THOSE WHO CAN'T GET THE ZIP FILE TO WORK
-
 //USE THIS IMAGE DURING PRESENATION
-
+//IGNORE COMMENTS PLEASE
 //https://codehs.com/uploads/75121dc0e19d8ce51758d14e416bf6a7
 
 import React, { Component } from 'react';
@@ -161,7 +159,7 @@ export default class App extends Component {
     };
 
    
-
+    // different screens
      handleClothesFeedPagePress  = () => this.setState(state => ({
         clothesfeedPageDisplay: 'block',
         utilitiesfeedPageDisplay: 'none',
@@ -246,20 +244,26 @@ export default class App extends Component {
     };
    
     handleClothesbuy = (image) => {
+        //find the class in classlist by title
         const selectedItem = this.state.clothesfeed.find((item) => item.image == image);
        
         if(selectedItem){
             this.state.clothesbuy = this.state.clothesbuy + 6;
+            //add selected class to upcoming classes list
+            //prevState gets the info
             this.setState((prevState) => ({
                 cartlist: [...prevState.cartlist, selectedItem],
             }));
         }
      }
-        handleUtilitiesbuy = (image) => 
+        handleUtilitiesbuy = (image) => {
+        //find the class in classlist by title
         const selectedItem = this.state.utilitiesfeed.find((item) => item.image == image);
        
         if(selectedItem){
             this.state.clothesbuy = this.state.clothesbuy + 3;
+            //add selected class to upcoming classes list
+            //prevState gets the info
             this.setState((prevState) => ({
                 cartlist: [...prevState.cartlist, selectedItem],
             }));
