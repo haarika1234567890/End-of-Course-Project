@@ -635,14 +635,14 @@ export default class App extends Component {
                     Want to Help out?  
                     </View>
                     <View style={styles.texts}>
-                    Through are Donate page you can donate to help support cost of shipping or send out your own clothes/utilities to your local community!
+                    Through our Donate page you can donate to help support cost of shipping or send out your own clothes/utilities to your local community!
                     </View>
                     <View style={styles.cartText}>
                     Quality  in your Clothes!
                     </View>
                      <View style={styles.texts}>
                      
-                     Through are Clothing and Utilities feeds there is a 1-5 scale, 5 being the best, 1 being heavily worn.
+                     Through our Clothing and Utilities feeds there is a 1-5 scale, 5 being the best, 1 being heavily worn.
                    </View>
                    <View style={styles.cartText}>
                     What about shipping?
